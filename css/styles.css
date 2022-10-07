@@ -149,11 +149,9 @@ background-position: 50% 50%;
   position: fixed;
   min-width: 1600px;
   top: 0;
-  left: 50%;
   min-height: var(--header-height);
   background-color: var(--white-bgc-collor);
   border-bottom: 1px solid var(--high-line-collor);
-  transform: translate(-50%);
   z-index: 1000;
 }
 
@@ -188,6 +186,8 @@ background-position: 50% 50%;
   font-size: 14px;
   line-height: 1.1;
   letter-spacing: 0.02em;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header-contact-list a:hover,
@@ -228,24 +228,6 @@ background-position: 50% 50%;
 .header-phone-item:focus .phone-icon {
   fill: var(--accent-btn-collor);
 }
-
-/* .mail {
-  align-items: center;
-  padding: 10px 20px;
-  border-radius: 3px;
-  text-decoration: none;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: left;
-  cursor: pointer;
-}
-
-.mail::before {
-  width: 20px;
-  height: 20px;
-  background-color: aqua;
-  content: ;
-} */
 
 /* ------------------------------------------------Лого------------------------------------------------ */
 .logo {
@@ -307,8 +289,8 @@ background-position: 50% 50%;
 
 .nav-link {
   position: relative;
-  padding-top: 24px;
-  padding-bottom: 25px;
+  padding-top: 32px;
+  padding-bottom: 32px;
   text-decoration: none;
   font-weight: 500;
   font-size: 14px;
@@ -317,7 +299,7 @@ background-position: 50% 50%;
   color: var(--primary-text-collor);
 }
 
-.nav-link::after {
+.nav-link.current::after {
   content: '';
   display: block;
   position: absolute;
@@ -326,18 +308,17 @@ background-position: 50% 50%;
   left: 0;
   bottom: 0;
   background-color: var(--accent-text-collor);
-
-  opacity: 0;
-  transition: 250ms;
 }
 
-.nav-link:hover::after,
-.nav-link:focus::after {
-  opacity: 1;
+.nav-link:hover,
+.nav-link:focus {
+  color: var(--accent-text-collor);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-link.current {
   color: var(--accent-text-collor);
+  position: relative;
 }
 
 /* ------------------------------------------------Підвал-сайту------------------------------------------------ */
@@ -359,12 +340,12 @@ background-position: 50% 50%;
   font-style: normal;
   font-size: 14px;
   line-height: 1.7;
-  letter-spacing: 0.03em;
 }
 
 .footer-list a:hover,
 .footer-list a:focus {
   color: var(--white-text-collor);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-item a {
@@ -374,11 +355,13 @@ background-position: 50% 50%;
 .footer-item a:hover,
 .footer-item a:focus {
   color: var(--secondary-text-collor);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-contact a:hover,
 .footer-contact a:focus {
   color: var(--white-text-collor);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-list > li:not(:last-child) {
@@ -471,6 +454,7 @@ background-position: 50% 50%;
 .btn-hero:focus {
   color: var(--white-text-collor);
   background-color: var(--accent-btn-collor);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-portfolio {
@@ -519,24 +503,13 @@ background-position: 50% 50%;
   background: var(--accent-btn-collor);
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
+  transition: color, background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .secondary.current {
   color: var(--white-text-collor);
   background: var(--accent-text-collor);
 }
-
-/* .btn.primary 
-  color: var(--white-text-collor);
-  background: var(--accent-text-collor);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-  border-radius: 4px;
-
-/* .btn.secondary
-  color: var(--white-text-collor);
-  background: var(--accent-text-collor);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-  border-radius: 4px; */
 
 /* --------------------------------------------------------------------------------------
 -------------------------------------------------#Студія#--------------------------------
@@ -585,6 +558,8 @@ background-position: 50% 50%;
   width: 100%;
   height: 100%;
   background-color: rgb(128, 128, 128, 0.5);
+  opacity: 1;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .backdrop.is-hidden {
@@ -693,17 +668,19 @@ background-position: 50% 50%;
   letter-spacing: 0.03em;
 }
 
-.thumb-production h3 {
+.thumb-production p {
+  display: flex;
   position: absolute;
-  padding: 27px 113px;
+  width: 100%;
+  height: 70px;
   font-weight: 700;
-  font-size: 14px;
-  line-height: 16px;
+  line-height: 1.14px;
   text-align: center;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
   bottom: 0;
   left: 0;
+  justify-content: center;
+  align-items: center;
 
   color: var(--white-text-collor);
   background-color: rgba(47, 48, 58, 0.8);
@@ -821,6 +798,7 @@ background-position: 50% 50%;
 .smm-link:focus {
   background-color: var(--accent-btn-collor);
   color: var(--white-bgc-collor);
+  transition: background-color, 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ----------------------Постійні клієнти---------------------- */
@@ -849,6 +827,7 @@ background-position: 50% 50%;
 .clients-link:focus {
   border-color: var(--accent-btn-collor);
   color: var(--accent-btn-collor);
+  transition: border-color, color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .clients-icon {
@@ -914,6 +893,7 @@ background-position: 50% 50%;
 .portfolio-list > .item a:focus {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .portfolio-list > .item a:hover .portfolio-action-text,
@@ -944,5 +924,5 @@ background-position: 50% 50%;
   text-align: left;
 
   transform: translatey(100%);
-  transition: transform 250ms ease;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
